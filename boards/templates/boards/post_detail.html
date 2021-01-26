@@ -2,9 +2,6 @@
 {% block content %}
 
 <h1>{{ post.title }}</h1>
-<div>
-    {{ post.text | linebreaks | urlize }}
-</div>
 
 <a class="button is-primary" href="{% url 'boards:comment_create' post.pk %}">コメントする</a>
 
@@ -15,5 +12,6 @@
     </div>
     {% endfor %}
 </section>
+<a class="button is-primary" href="{% url 'boards:post_list'%}">TOP</a>
 
 {% endblock %}

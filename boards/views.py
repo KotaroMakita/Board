@@ -12,6 +12,7 @@ from .models import Post, Comment
 class PostList(generic.ListView):
     model = Post
     # ordering = '-created_at'
+    paginate_by = 2
 
 
 class PostDetail(generic.DetailView):
