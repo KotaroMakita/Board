@@ -22,4 +22,6 @@
 {% if page_obj.has_next %}
     <a href="?page={{ page_obj.next_page_number }}">Next</a>
 {% endif %}
+
+<a href="{% url 'boards:post_create' %}">Titleを作成</a>
 {% endblock %}

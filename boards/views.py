@@ -1,8 +1,9 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CommentCreateForm
+from .forms import CommentCreateForm, PostCreateForm
 from .models import Post, Comment
+from django import forms
 
 
 
@@ -12,7 +13,7 @@ from .models import Post, Comment
 class PostList(generic.ListView):
     model = Post
     # ordering = '-created_at'
-    paginate_by = 2
+    paginate_by = 10
 
 
 class PostDetail(generic.DetailView):
@@ -30,3 +31,9 @@ class CommentCreate(generic.CreateView):
         comment.target = post
         comment.save()
         return redirect('boards:post_detail', pk=post_pk)
+
+
+class PostCreate(generic.CreateView):
+    model = Post
+    form_class = PostCreateForm
+    success_url = reverse_lazy('boards:post_list')
