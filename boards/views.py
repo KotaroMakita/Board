@@ -12,7 +12,7 @@ from django import forms
 
 class PostList(generic.ListView):
     model = Post
-    ordering = '-created_at'
+    # ordering = '-created_at'
     paginate_by = 10
 
 

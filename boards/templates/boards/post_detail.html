@@ -9,7 +9,7 @@
     {% for comment in post.comment_set.all %}
     <div class="box">
         {{ comment.text | linebreaks | urlize }}
-        {{ comment.created_at }}
+<!--        {{ comment.created_at }}-->
     </div>
     {% endfor %}
 </section>

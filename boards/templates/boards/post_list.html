@@ -6,6 +6,8 @@
     <h1><a href="{% url 'boards:post_detail' post.pk %}">{{ post.title }}</a> </h1>
 </article>
 {% endfor %}
+{% for post in Post.objects.annotate(comments=Count('comment')%}
+<p>{{ post }}</p>
 
 {% if page_obj.has_previous %}
     <a href="?page={{ page.obj.previous_page_number }}">Back</a>
