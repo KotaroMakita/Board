@@ -4,9 +4,10 @@
 {% for post in post_list %}
 <article class="box">
     <h1><a href="{% url 'boards:post_detail' post.pk %}">{{ post.title }}</a> </h1>
+    <p>{{ post.comment_set.count | pprint }}</p>
 </article>
 {% endfor %}
-{% for post in Post.objects.annotate(comments=Count('comment')%}
+
 <p>{{ post }}</p>
 
 {% if page_obj.has_previous %}
