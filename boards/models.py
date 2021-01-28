@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
-from datetime import timezone
-from django.utils.timezone import now
+from django.utils import timezone
 
 # Create your models here.
 
@@ -20,7 +19,7 @@ class Post(models.Model):
 class Comment(models.Model):
     text = models.TextField('本文')
     target = models.ForeignKey(Post, on_delete=models.PROTECT, verbose_name='どの記事へのコメントか')
-    created_at = models.DateTimeField('作成日',default=timezone.now,blank=True)
+    created_at = models.DateTimeField('作成日', default=timezone.now, blank=True)
 
     def __str__(self):
         return self.text[:20]
