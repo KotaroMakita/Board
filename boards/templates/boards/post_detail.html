@@ -9,7 +9,7 @@
     {% for comment in post.comment_set.all %}
     <div class="box">
         {{ comment.text | linebreaks | urlize }}
-        <p>({{ comment.created_at| date:"Y/m/d f"}})</p>
+        <p>({{ comment.created_at| date:"Y/m/d H:i:s"}})</p>
     </div>
     {% endfor %}
 </section>
