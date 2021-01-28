@@ -20,6 +20,7 @@ class Comment(models.Model):
     text = models.TextField('本文')
     target = models.ForeignKey(Post, on_delete=models.PROTECT, verbose_name='どの記事へのコメントか')
     created_at = models.DateTimeField('作成日', default=timezone.now, blank=True)
+    good = models.IntegerField('いいね',default=0)
 
     def __str__(self):
         return self.text[:20]

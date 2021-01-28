@@ -37,3 +37,4 @@ class PostCreate(generic.CreateView):
     model = Post
     form_class = PostCreateForm
     success_url = reverse_lazy('boards:post_list')
+
