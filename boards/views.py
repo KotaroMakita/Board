@@ -38,3 +38,9 @@ class PostCreate(generic.CreateView):
     form_class = PostCreateForm
     success_url = reverse_lazy('boards:post_list')
 
+
+class PostDelete(generic.DeleteView):
+    model = Comment
+    success_url = reverse_lazy('boards:post_list')
+
+
