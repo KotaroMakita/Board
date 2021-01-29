@@ -49,4 +49,9 @@ class CommentUpdate(generic.UpdateView):
     form_class = CommentCreateForm
     success_url = reverse_lazy('boards:post_list')
 
+def goodfunc(request, pk):
+    object = Comment.objects.get(pk=pk)
+    object.good = object.good + 1
+    object.save()
+    return redirect('boards:post_detail', pk=pk)
 
