@@ -50,8 +50,8 @@ class CommentUpdate(generic.UpdateView):
     success_url = reverse_lazy('boards:post_list')
 
 def goodfunc(request, pk):
-    gooding = get_object_or_404(Comment, pk=pk)
-    gooding.good = gooding.good + 1
-    gooding.save()
+    object = get_object_or_404(Comment, pk=pk)
+    object.good = object.good + 1
+    object.save()
     return redirect('boards:post_detail', pk=pk)
 
