@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from  django.views.generic import TemplateView
 
 app_name = 'boards'
 
@@ -11,4 +12,5 @@ urlpatterns = [
     path('delete/<int:pk>/', views.PostDelete.as_view(), name='comment_delete'),
     path('update/<int:pk>/', views.CommentUpdate.as_view(), name='comment_update'),
     path('good/<int:pk_title>/<int:pk_comment>/', views.goodfunc, name='comment_good'),
+
 ]

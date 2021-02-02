@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'boards.apps.BoardsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +54,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 ROOT_URLCONF = 'training.urls'
 
 TEMPLATES = [
@@ -63,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -101,6 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -119,3 +132,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#sitesフレームワーク用のサイトID
+SITE_ID = 1
+
+#ログイン・ログアウト時のリダイレクト先
+LOGIN_REDIRECT_URL = 'home'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+#認証方式を「メルアドとパスワード」に設定
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+#ユーザ名は使用しない
+ACCOUNT_USERNAME_REQUIRED = False
+
+#ユーザ登録時に確認メールを送信するか(none=送信しない、 mandatory=送信する)
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = True #ユーザ登録にメルアド必須にする
