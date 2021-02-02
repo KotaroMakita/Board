@@ -8,9 +8,9 @@ class CommentCreateForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('text',)
-        widgets = {
-            'text': forms.Textarea(attrs={'class': 'textarea'})
-        }
+        # widgets = {
+        #     'text': forms.Textarea(attrs={'class': 'textarea'})
+        # }
 
 
 class PostCreateForm(forms.ModelForm):
