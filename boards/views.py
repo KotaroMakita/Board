@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CommentCreateForm, PostCreateForm
 from .models import Post, Comment
-from django import forms
+from django.contrib.auth import logout
 
 
 
@@ -54,4 +54,8 @@ def goodfunc(request, pk_title, pk_comment):
     object.good = object.good + 1
     object.save()
     return redirect('boards:post_detail', pk=pk_title)
+
+def logoutfunc(request):
+    logout(request)
+    return redirect('home')
 
