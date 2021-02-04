@@ -139,7 +139,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
 
 #ログイン・ログアウト時のリダイレクト先
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'boards:post_list'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 #認証方式を「メルアドとパスワード」に設定
