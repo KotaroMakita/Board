@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
  <form action="" method="POST">
-     {{ form.as_p }}
+     {{ form.text }}
      {% csrf_token %}
      <button type="submit">送信</button>
 <!--     {{ form.non_field_errors }}-->

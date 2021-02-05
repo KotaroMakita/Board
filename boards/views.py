@@ -31,7 +31,7 @@ class CommentCreate(generic.CreateView):
         post = get_object_or_404(Post, pk=post_pk)
         comment = form.save(commit=False)
         comment.target = post
-        comment.writer = Comment.objects.get(id=Comment.writer.id)
+        comment.writer = Comment.objects.get(pk=Comment.writer.pk)
         comment.save()
         return redirect('boards:post_detail', pk=post_pk)
 
