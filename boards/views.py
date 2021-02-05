@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CommentCreateForm, PostCreateForm
-from .models import Post, Comment, Author
+from .models import Post, Comment
 from django.contrib.auth import logout, mixins
 from django.views.generic.edit import CreateView
 
@@ -61,12 +61,4 @@ def logoutfunc(request):
     logout(request)
     return redirect('home')
 
-
-class AuthorCreate(mixins.LoginRequiredMixin, CreateView):
-    model = Author
-    fields = ['name']
-
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
 
