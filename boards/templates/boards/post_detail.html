@@ -11,7 +11,7 @@
         <p>{{ comment.text | linebreaks | urlize }}</p>
         <a href="{% url 'boards:comment_good' pk_title=post.pk pk_comment=comment.pk %}">いいね {{ comment.good }}</a>
         <p>({{ comment.created_at | date:"Y/m/d H:i:s" }})</p>
-        {% if user.is_authenticated %}
+        {% if request.user.id == comment.author_id %}
         <a href="{% url 'boards:comment_update' comment.pk %}">編集</a>
         <a href="{% url 'boards:comment_delete' comment.pk %}">削除</a>
         {% endif %}
