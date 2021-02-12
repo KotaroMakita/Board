@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if user.is_authenticated %}
     <form action="" method="POST">
         {{ form.title }}
 <!--        <input type="text" name="title">-->
         {% csrf_token %}
         <button type="submit">送信</button>
     </form>
+{% else %}
+<a href="{%url 'home' %}">Please Login</a>
+{% endif %}
 {% endblock %}

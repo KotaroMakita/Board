@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if user.is_authenticated %}
 <h1>Top画面</h1>
 {% for post in post_list %}
 <article class="box">
@@ -27,4 +28,7 @@
 {% endif %}
 
 <a href="{% url 'boards:post_create' %}">Titleを作成</a>
+{% else %}
+<a href="{% url 'home' %}">Please Login</a>
+{% endif %}
 {% endblock %}

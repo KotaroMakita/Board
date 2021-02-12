@@ -6,14 +6,14 @@ from .models import Post, Comment
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 
 
 
 
 # Create your views here.
 
-@login_required
+# @login_required
 class PostList(generic.ListView):
     model = Post
     # ordering = '-created_at'
