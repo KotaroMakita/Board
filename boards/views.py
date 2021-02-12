@@ -3,15 +3,17 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CommentCreateForm, PostCreateForm
 from .models import Post, Comment
-from django.contrib.auth import logout, mixins
+from django.contrib.auth import logout
+from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView
+# from django.contrib.auth.decorators import login_required
 
 
 
 
 # Create your views here.
 
-
+# @login_required
 class PostList(generic.ListView):
     model = Post
     # ordering = '-created_at'
@@ -31,7 +33,7 @@ class CommentCreate(generic.CreateView):
         post = get_object_or_404(Post, pk=post_pk)
         comment = form.save(commit=False)
         comment.target = post
-        comment.writer = Comment.objects.get(pk=Comment.writer.pk)
+        comment.writer = User.objects.get(pk=self.request.user.pk)
         comment.save()
         return redirect('boards:post_detail', pk=post_pk)
 
