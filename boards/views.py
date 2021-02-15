@@ -5,6 +5,7 @@ from .forms import CommentCreateForm, PostCreateForm
 from .models import Post, Comment
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 # from django.contrib.auth.decorators import login_required
 
@@ -63,5 +64,11 @@ def goodfunc(request, pk_title, pk_comment):
 def logoutfunc(request):
     logout(request)
     return redirect('home')
+
+
+class UserProfileView(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'boards/profile.html'
+    def get_queryset(self):
+        return User.objects.get(id=self.request.user.id)
 
 

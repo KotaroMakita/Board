@@ -2,6 +2,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <h1>Top画面</h1>
+<a class="item" href="{% url 'boards:profile'%}">プロフィール</a>
 {% for post in post_list %}
 <article class="box">
     <h1><a href="{% url 'boards:post_detail' post.pk %}">{{ post.title }}</a> </h1>
